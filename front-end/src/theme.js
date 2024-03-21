@@ -1,5 +1,5 @@
 export const lightTheme = {
-  white: {
+  grey: {
     100: "#fdfdfd",
     200: "#fbfbfc",
     300: "#f8f9fa",
@@ -79,7 +79,7 @@ export const themeSettings = (mode) => {
             // palette values for dark mode
             primary: {
               ...darkTheme.primary,
-              main: lightTheme.grey[50],
+              main: lightTheme.grey[300],
               light: lightTheme.grey[100],
             },
             secondary: {
@@ -92,8 +92,8 @@ export const themeSettings = (mode) => {
               main: lightTheme.grey[500],
             },
             background: {
-              default: lightTheme.grey[0],
-              alt: lightTheme.grey[50],
+              default: lightTheme.grey[100],
+              alt: lightTheme.grey[100],
             },
           }),
     },
