@@ -19,7 +19,7 @@ const Navbar = () => {
   const theme = useTheme();
 
   return (
-    <AppBar width="100%" height="100%" position="static">
+    <AppBar width="100%" height="100%" position="static" elevation={0}>
       <Toolbar sx={{ justifyContent: "space-between" }}>
         <FlexBetween>
           <IconButton>
