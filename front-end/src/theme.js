@@ -1,54 +1,74 @@
 export const lightTheme = {
   grey: {
-    100: "#fdfdfd",
-    200: "#fbfbfc",
-    300: "#f8f9fa",
-    400: "#f6f7f9",
-    500: "#f4f5f7",
-    600: "#c3c4c6",
-    700: "#929394",
-    800: "#626263",
-    900: "#313131",
+    100: "#fcfcfc",
+    200: "#f8f8f8",
+    300: "#f5f5f5",
+    400: "#f1f1f1",
+    500: "#eeeeee",
+    600: "#bebebe",
+    700: "#8f8f8f",
+    800: "#5f5f5f",
+    900: "#303030",
   },
   primary: {
-    100: "#ffebdf",
-    200: "#ffd7c0",
-    300: "#ffc3a0",
-    400: "#ffaf81",
-    500: "#ff9b61",
-    600: "#cc7c4e",
-    700: "#995d3a",
-    800: "#663e27",
-    900: "#331f13",
+    100: "#dcf5ed",
+    200: "#b8ebda",
+    300: "#95e0c8",
+    400: "#71d6b5",
+    500: "#4ecca3",
+    600: "#3ea382",
+    700: "#2f7a62",
+    800: "#1f5241",
+    900: "#102921",
   },
   secondary: {
-    100: "#d2d2d5",
-    200: "#a5a5ab",
-    300: "#787880",
-    400: "#4b4b56",
-    500: "#1e1e2c",
-    600: "#181823",
-    700: "#12121a",
-    800: "#0c0c12",
-    900: "#060609",
+    100: "#d3d4d6",
+    200: "#a7a9ad",
+    300: "#7b7f83",
+    400: "#4f545a",
+    500: "#232931",
+    600: "#1c2127",
+    700: "#15191d",
+    800: "#0e1014",
+    900: "#07080a",
   },
 };
 
-function reversePalette(lightTheme) {
-  const reversedTokens = {};
-  Object.entries(lightTheme).forEach(([key, val]) => {
-    const keys = Object.keys(val);
-    const values = Object.values(val);
-    const length = keys.length;
-    const reversedObj = {};
-    for (let i = 0; i < length; i++) {
-      reversedObj[keys[i]] = values[length - i - 1];
-    }
-    reversedTokens[key] = reversedObj;
-  });
-  return reversedTokens;
-}
-export const darkTheme = reversePalette(lightTheme);
+export const darkTheme = {
+  grey: {
+    100: "#d3d4d6",
+    200: "#a7a9ad",
+    300: "#7b7f83",
+    400: "#4f545a",
+    500: "#232931",
+    600: "#1c2127",
+    700: "#15191d",
+    800: "#0e1014",
+    900: "#07080a",
+  },
+  primary: {
+    100: "#dcf5ed",
+    200: "#b8ebda",
+    300: "#95e0c8",
+    400: "#71d6b5",
+    500: "#4ecca3",
+    600: "#3ea382",
+    700: "#2f7a62",
+    800: "#1f5241",
+    900: "#102921",
+  },
+  secondary: {
+    100: "#fcfcfc",
+    200: "#f8f8f8",
+    300: "#f5f5f5",
+    400: "#f1f1f1",
+    500: "#eeeeee",
+    600: "#bebebe",
+    700: "#8f8f8f",
+    800: "#5f5f5f",
+    900: "#303030",
+  },
+};
 
 export const themeSettings = (mode) => {
   return {
