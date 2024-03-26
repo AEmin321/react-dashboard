@@ -34,6 +34,22 @@ import { useState, useEffect } from "react";
 const sidebarItems = [
   {
     text: "Dashboard",
+    icon: <HomeOutlined />,
+  },
+  {
+    text: "Quick Menu",
+    icon: null,
+  },
+  {
+    text: "Products",
+    icon: <ShoppingCartOutlined />,
+  },
+  {
+    text: "Users",
+    icon: <Groups2Outlined />,
+  },
+  {
+    text: "Transactions",
     icon: <ReceiptLongOutlined />,
   },
   {
@@ -41,32 +57,28 @@ const sidebarItems = [
     icon: <PublicOutlined />,
   },
   {
-    text: "Geography",
+    text: "Stats",
     icon: null,
   },
   {
-    text: "Geography",
-    icon: <PublicOutlined />,
+    text: "Daily",
+    icon: <TodayOutlined />,
   },
   {
-    text: "Geography",
-    icon: <PublicOutlined />,
+    text: "Monthly",
+    icon: <CalendarMonthOutlined />,
   },
   {
-    text: "Geography",
-    icon: <PublicOutlined />,
+    text: "Settings",
+    icon: null,
   },
   {
-    text: "Geography",
-    icon: <PublicOutlined />,
+    text: "Admin",
+    icon: <AdminPanelSettingsOutlined />,
   },
   {
-    text: "Geography",
-    icon: <PublicOutlined />,
-  },
-  {
-    text: "Geography",
-    icon: <PublicOutlined />,
+    text: "Performance",
+    icon: <TrendingUpOutlined />,
   },
 ];
 
@@ -99,11 +111,11 @@ const SideBar = ({ isDrawerOpen, setIsDrawerOpen, isNotMobile }) => {
           }}
         >
           <Box width="100%">
-            <Box m="1.5rem 1.7rem 1.7rem 3rem">
-              <FlexBetween color={theme.palette.secondary.main}>
+            <Box m="1.5rem 1.7rem 1rem 3rem">
+              <FlexBetween color={theme.palette.secondary[300]}>
                 <Box display="flex" alignItems="center" gap="0.5rem">
-                  <Typography variant="h4" fontWeight="bold">
-                    MYDASH.
+                  <Typography variant="h3" fontWeight="bold">
+                    HADash.
                   </Typography>
                 </Box>
                 {!isNotMobile && (
@@ -117,7 +129,7 @@ const SideBar = ({ isDrawerOpen, setIsDrawerOpen, isNotMobile }) => {
               {sidebarItems.map(({ text, icon }) => {
                 if (!icon) {
                   return (
-                    <Typography key={text} sx={{ m: "2rem 0 1rem 3rem" }}>
+                    <Typography key={text} sx={{ m: "1rem 0 1rem 3rem" }}>
                       {text}
                     </Typography>
                   );
@@ -139,6 +151,12 @@ const SideBar = ({ isDrawerOpen, setIsDrawerOpen, isNotMobile }) => {
                           activeItem === btnName
                             ? theme.palette.primary[600]
                             : theme.palette.secondary[100],
+                        "&:hover": {
+                          backgroundColor:
+                            activeItem === btnName
+                              ? theme.palette.secondary[300]
+                              : "",
+                        },
                       }}
                     >
                       <ListItemIcon

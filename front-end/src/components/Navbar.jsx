@@ -14,19 +14,24 @@ import { useDispatch } from "react-redux";
 import FlexBetween from "./FlexBetween";
 import { setMode } from "../state";
 
-const Navbar = () => {
+const Navbar = ({ isDrawerOpen, setIsDrawerOpen }) => {
   const dispatch = useDispatch();
   const theme = useTheme();
 
   return (
     <AppBar width="100%" height="100%" position="static" elevation={0}>
-      <Toolbar sx={{ justifyContent: "space-between" }}>
+      <Toolbar
+        sx={{
+          justifyContent: "space-between",
+          backgroundColor: theme.palette.neutral.main,
+        }}
+      >
         <FlexBetween>
-          <IconButton>
+          <IconButton onClick={() => setIsDrawerOpen(!isDrawerOpen)}>
             <Menu />
           </IconButton>
           <FlexBetween
-            backgroundColor={theme.palette.background.alt}
+            backgroundColor={theme.palette.secondary[900]}
             gap="3rem"
             borderRadius="9px"
             padding="0.1rem 0.7rem"
