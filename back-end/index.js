@@ -1,15 +1,19 @@
-const express = require("express");
-const mongoose = require("mongoose");
-const cors = require("cors");
-const bodyParser = require("body-parser");
-const config = require("./utils/config");
-const helmet = require("helmet");
-const morgan = require("morgan");
-const logger = require("./utils/logger");
-const generalRouter = require("./routes/general");
-const productsRouter = require("./routes/products");
-const salesRouter = require("./routes/sales");
-const managementRouter = require("./routes/management");
+import express from "express";
+import mongoose from "mongoose";
+import cors from "cors";
+import bodyParser from "body-parser";
+import { PORT, MONGO_URL } from "./utils/config.js";
+import helmet from "helmet";
+import morgan from "morgan";
+import logger from "./utils/logger";
+
+import generalRouter from "./controllers/general";
+import productsRouter from "./routes/products";
+import salesRouter from "./routes/sales";
+import managementRouter from "./controllers/managementRouter";
+
+import User from "./models/User";
+import { dataUser } from "./data";
 
 /* CONFIGURATION */
 const app = express();
@@ -29,11 +33,12 @@ app.use("/api/management", managementRouter);
 
 /* MONGOOSE SETUP */
 mongoose
-  .connect(config.MONGO_URL)
+  .connect(MONGO_URL)
   .then(() => {
     logger.info("connected to mongo db");
-    app.listen(config.PORT, () =>
-      logger.info(`listening to port ${config.PORT}`)
-    );
+    app.listen(PORT, () => {
+      logger.info(`listening to port ${PORT}`);
+      User.insertMany(dataUser);
+    });
   })
   .catch((error) => logger.error(`${error} occured`));

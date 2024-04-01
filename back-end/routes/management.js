@@ -1,3 +1,5 @@
-const managementRouter = require("express").Router();
+import { Router } from "express";
 
-module.exports = managementRouter;
+const managementRouter = Router();
+
+export default managementRouter;

@@ -1,3 +1,5 @@
-const salesRouter = require("express").Router();
+import { Router } from "express";
 
-module.exports = salesRouter;
+const salesRouter = Router();
+
+export default salesRouter;
