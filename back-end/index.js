@@ -5,15 +5,16 @@ import bodyParser from "body-parser";
 import { PORT, MONGO_URL } from "./utils/config.js";
 import helmet from "helmet";
 import morgan from "morgan";
-import logger from "./utils/logger";
+import { info, error } from "./utils/logger.js";
 
-import generalRouter from "./controllers/general";
-import productsRouter from "./routes/products";
-import salesRouter from "./routes/sales";
-import managementRouter from "./controllers/managementRouter";
+import generalRouter from "./controllers/general.js";
+import productsRouter from "./controllers/products.js";
+import salesRouter from "./routes/sales.js";
 
-import User from "./models/User";
-import { dataUser } from "./data";
+import User from "./models/User.js";
+import Product from "./models/Product.js";
+import ProductStat from "./models/ProductStat.js";
+import { dataProduct, dataProductStat } from "./data.js";
 
 /* CONFIGURATION */
 const app = express();
@@ -29,16 +30,14 @@ app.use(cors());
 app.use("/api/general", generalRouter);
 app.use("/api/products", productsRouter);
 app.use("/api/sales", salesRouter);
-app.use("/api/management", managementRouter);
 
 /* MONGOOSE SETUP */
 mongoose
   .connect(MONGO_URL)
   .then(() => {
-    logger.info("connected to mongo db");
+    info("connected to mongo db");
     app.listen(PORT, () => {
-      logger.info(`listening to port ${PORT}`);
-      User.insertMany(dataUser);
+      info(`listening to port ${PORT}`);
     });
   })
-  .catch((error) => logger.error(`${error} occured`));
+  .catch((error) => error(`${error} occured`));
