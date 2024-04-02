@@ -25,8 +25,12 @@ const Layout = () => {
         setIsDrawerOpen={setIsDrawerOpen}
         user={data || {}}
       />
-      <Box>
-        <Navbar isDrawerOpen={isDrawerOpen} setIsDrawerOpen={setIsDrawerOpen} />
+      <Box flexGrow={1}>
+        <Navbar
+          user={data || {}}
+          isDrawerOpen={isDrawerOpen}
+          setIsDrawerOpen={setIsDrawerOpen}
+        />
         <Outlet />
       </Box>
     </Box>
