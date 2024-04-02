@@ -27,6 +27,7 @@ import {
   TrendingUpOutlined,
   PieChartOutline,
 } from "@mui/icons-material";
+import profile from "../assets/profile.jpg";
 import FlexBetween from "./FlexBetween";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
@@ -82,7 +83,7 @@ const sidebarItems = [
   },
 ];
 
-const SideBar = ({ isDrawerOpen, setIsDrawerOpen, isNotMobile }) => {
+const SideBar = ({ isDrawerOpen, setIsDrawerOpen, isNotMobile, user }) => {
   const { pathname } = useLocation();
   const [activeItem, setActiveItem] = useState("");
   const theme = useTheme();
@@ -129,7 +130,7 @@ const SideBar = ({ isDrawerOpen, setIsDrawerOpen, isNotMobile }) => {
               {sidebarItems.map(({ text, icon }) => {
                 if (!icon) {
                   return (
-                    <Typography key={text} sx={{ m: "1rem 0 1rem 3rem" }}>
+                    <Typography key={text} sx={{ m: "5px 0 5px 3rem" }}>
                       {text}
                     </Typography>
                   );
@@ -139,7 +140,7 @@ const SideBar = ({ isDrawerOpen, setIsDrawerOpen, isNotMobile }) => {
                   <ListItem key={text} disablePadding>
                     <ListItemButton
                       onClick={() => {
-                        navigate(`/${text}`);
+                        navigate(`/${btnName}`);
                         setActiveItem(text);
                       }}
                       sx={{
@@ -179,6 +180,29 @@ const SideBar = ({ isDrawerOpen, setIsDrawerOpen, isNotMobile }) => {
                 );
               })}
             </List>
+          </Box>
+          <Box sx={{ position: "absolute", bottom: "1rem" }}>
+            <Divider />
+            <FlexBetween textTransform="none" gap="1rem" m="1rem 1.7rem 0 2rem">
+              <Box
+                component="img"
+                src={profile}
+                sx={{
+                  height: "40px",
+                  width: "40px",
+                  borderRadius: "50%",
+                  objectFit: "cover",
+                }}
+                alt="profile pic"
+              />
+              <Box textAlign="left">
+                <Typography sx={{ fontWeight: "bold", fontSize: "14px" }}>
+                  {user.name}
+                </Typography>
+                <Typography fontSize="12px">{user.role}</Typography>
+              </Box>
+              <SettingsOutlined />
+            </FlexBetween>
           </Box>
         </Drawer>
       )}

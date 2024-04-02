@@ -12,7 +12,7 @@ import {
 import { InputBase, useTheme, Badge } from "@mui/material";
 import { useDispatch } from "react-redux";
 import FlexBetween from "./FlexBetween";
-import { setMode } from "../state";
+import { setMode } from "../state/themeSlice";
 
 const Navbar = ({ isDrawerOpen, setIsDrawerOpen }) => {
   const dispatch = useDispatch();
