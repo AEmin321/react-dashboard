@@ -8,7 +8,16 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Rating from "@mui/material/Rating";
 
-const Product = ({ name, price, description,category, rating, _id, supply, stats }) => {
+const Product = ({
+  name,
+  price,
+  description,
+  category,
+  rating,
+  _id,
+  supply,
+  stats,
+}) => {
   const [isExpanded, setIsExpanded] = useState(false);
   const theme = useTheme();
 
@@ -18,6 +27,7 @@ const Product = ({ name, price, description,category, rating, _id, supply, stats
         backgroundColor: theme.palette.background.alt,
         backgroundImage: "none",
       }}
+      elevation={2}
     >
       <CardContent>
         <Typography
@@ -46,9 +56,11 @@ const Product = ({ name, price, description,category, rating, _id, supply, stats
         in={isExpanded}
         timeout="auto"
         unmountOnExit
-        sx={{
-          color: theme.palette.neutral[300],
-        }}
+        sx={
+          {
+            // color: theme.palette.neutral[300],
+          }
+        }
       >
         <CardContent>
           <Typography>id: {_id}</Typography>

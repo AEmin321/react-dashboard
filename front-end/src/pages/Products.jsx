@@ -3,7 +3,7 @@ import { useGetProductsQuery } from "../state/apiSlice";
 import Product from "../components/Product";
 import Box from "@mui/material/Box";
 import useMediaQuery from "@mui/material/useMediaQuery";
-import Skeleton from "@mui/material/Skeleton";
+import CircularProgress from "@mui/material/CircularProgress";
 
 const Products = () => {
   const { data, isLoading } = useGetProductsQuery();
@@ -49,7 +49,16 @@ const Products = () => {
           )}
         </Box>
       ) : (
-        <>loading ....</>
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            height: "60vh",
+          }}
+        >
+          <CircularProgress />
+        </Box>
       )}
     </Box>
   );

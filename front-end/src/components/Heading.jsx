@@ -6,7 +6,7 @@ const Heading = ({ title, subTitle }) => {
   const theme = useTheme();
 
   return (
-    <Box>
+    <Box mb="1rem">
       <Typography
         fontWeight="bold"
         variant="h3"

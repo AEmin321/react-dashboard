@@ -116,7 +116,7 @@ const SideBar = ({ isDrawerOpen, setIsDrawerOpen, isNotMobile, user }) => {
               <FlexBetween color={theme.palette.secondary[300]}>
                 <Box display="flex" alignItems="center" gap="0.5rem">
                   <Typography variant="h3" fontWeight="bold">
-                    HADash.
+                    Dashboard.
                   </Typography>
                 </Box>
                 {!isNotMobile && (
