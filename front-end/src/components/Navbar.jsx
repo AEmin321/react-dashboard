@@ -94,14 +94,26 @@ const Navbar = ({ isDrawerOpen, setIsDrawerOpen, user }) => {
                 alt="profile pic"
               />
               <Box textAlign="left">
-                <Typography sx={{ fontWeight: "bold", fontSize: "13px" }}>
+                <Typography
+                  sx={{
+                    fontWeight: "bold",
+                    fontSize: "13px",
+                    color: theme.palette.secondary[200],
+                  }}
+                >
                   {user.name}
                 </Typography>
-                <Typography fontSize="10px" textTransform="capitalize">
+                <Typography
+                  fontSize="10px"
+                  textTransform="capitalize"
+                  sx={{ color: theme.palette.secondary[200] }}
+                >
                   {user.role}
                 </Typography>
               </Box>
-              <ArrowDropDownOutlined />
+              <ArrowDropDownOutlined
+                sx={{ color: theme.palette.secondary[200] }}
+              />
             </Button>
             <Menu
               anchorEl={anchorEl}
@@ -109,8 +121,6 @@ const Navbar = ({ isDrawerOpen, setIsDrawerOpen, user }) => {
               onClose={handleClose}
               anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
             >
-              <MenuItem onClick={handleClose}>Profile</MenuItem>
-              <MenuItem onClick={handleClose}>My account</MenuItem>
               <MenuItem onClick={handleClose}>Logout</MenuItem>
             </Menu>
           </FlexBetween>

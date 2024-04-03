@@ -12,10 +12,8 @@ const Layout = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(true);
 
   const userId = useSelector((state) => state.global.userId);
-  console.log("🚀 ~ Layout ~ userId:", userId);
 
   const { data } = useGetUserQuery(userId);
-  console.log("🚀 ~ Layout ~ data:", data);
 
   return (
     <Box width="100%" height="100%" display={isNotMobile ? "flex" : "block"}>
