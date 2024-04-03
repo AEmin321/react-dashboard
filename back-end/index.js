@@ -28,7 +28,7 @@ app.use(cors());
 
 /* ROUTES */
 app.use("/api/general", generalRouter);
-app.use("/api/products", productsRouter);
+app.use("/api/client", productsRouter);
 app.use("/api/sales", salesRouter);
 
 /* MONGOOSE SETUP */

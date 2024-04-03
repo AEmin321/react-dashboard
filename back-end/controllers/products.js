@@ -4,7 +4,7 @@ import ProductStat from "../models/ProductStat.js";
 
 const productsRouter = Router();
 
-productsRouter.get("/", async (request, response) => {
+productsRouter.get("/products", async (request, response) => {
   try {
     const products = await Product.find();
     const productsWithStats = await Promise.all(

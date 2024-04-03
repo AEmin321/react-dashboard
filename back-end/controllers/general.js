@@ -14,4 +14,14 @@ generalRouter.get("/users/:id", async (request, response) => {
   }
 });
 
+generalRouter.get("/customers", async (request, response) => {
+  try {
+    const customers = await User.find({ role: "user" }).select("-password");
+
+    response.status(200).json(customers);
+  } catch (error) {
+    response.status(404).json({ message: error.message });
+  }
+});
+
 export default generalRouter;
