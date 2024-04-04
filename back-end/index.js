@@ -9,12 +9,12 @@ import { info, error } from "./utils/logger.js";
 
 import generalRouter from "./controllers/general.js";
 import productsRouter from "./controllers/products.js";
-import salesRouter from "./routes/sales.js";
 
 import User from "./models/User.js";
 import Product from "./models/Product.js";
+import Transaction from "./models/Transaction.js";
 import ProductStat from "./models/ProductStat.js";
-import { dataProduct, dataProductStat } from "./data.js";
+import { dataProduct, dataProductStat, dataTransaction } from "./data.js";
 
 /* CONFIGURATION */
 const app = express();
@@ -29,7 +29,6 @@ app.use(cors());
 /* ROUTES */
 app.use("/api/general", generalRouter);
 app.use("/api/client", productsRouter);
-app.use("/api/sales", salesRouter);
 
 /* MONGOOSE SETUP */
 mongoose
