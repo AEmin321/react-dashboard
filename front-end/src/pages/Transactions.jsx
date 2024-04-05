@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { useGetTransactionsQuery } from "../state/apiSlice";
 import Heading from "../components/Heading";
+import CustomDataGridToolbar from "../components/CustomDataGridToolbar";
 
 import Box from "@mui/material/Box";
-import { DataGrid, GridToolbar } from "@mui/x-data-grid/DataGrid";
+import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import { useTheme } from "@mui/material";
 
 const Transactions = () => {
@@ -11,6 +12,7 @@ const Transactions = () => {
   const [pageSize, setPageSize] = useState(25);
   const [sort, setSort] = useState({});
   const [search, setSearch] = useState("");
+  const [searchInput, setSearchInput] = useState("");
 
   const { isLoading, data } = useGetTransactionsQuery({
     page: page,
@@ -76,6 +78,12 @@ const Transactions = () => {
           onPageChange={(newPage) => setPage(newPage)}
           onPageSizeChange={(newPageSize) => setPageSize(newPageSize)}
           onSortModelChange={(newSortModel) => setSort(...newSortModel)}
+          slots={{
+            toolbar: CustomDataGridToolbar,
+          }}
+          slotProps={{
+            toolbar: { setSearchInput, searchInput, setSearch },
+          }}
         />
       </Box>
     </Box>
