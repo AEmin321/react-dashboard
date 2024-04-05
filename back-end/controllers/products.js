@@ -25,7 +25,14 @@ productsRouter.get("/products", async (request, response) => {
 
 productsRouter.get("/transactions", async (request, response) => {
   try {
-    const { page = 1, pageSize = 20, sort = null, search = "" } = request.query;
+    const { page, pageSize, sort, search } = request.query;
+    console.log(
+      "🚀 ~ productsRouter.get ~ page = 1, pageSize = 25, sort = null, search = ",
+      page,
+      pageSize,
+      sort,
+      search
+    );
 
     const generateSort = () => {
       const sortParsed = JSON.parse(sort);
@@ -48,9 +55,8 @@ productsRouter.get("/transactions", async (request, response) => {
       .limit(pageSize);
 
     const total = await Transaction.countDocuments({
-      name: { $regex: search, $options: "i" },
+      // name: { $regex: search, $options: "i" },
     });
-
     response.status(200).json({ transactions, total });
   } catch (error) {
     response.status(404).json({ message: error.message });
