@@ -14,7 +14,13 @@ import User from "./models/User.js";
 import Product from "./models/Product.js";
 import Transaction from "./models/Transaction.js";
 import ProductStat from "./models/ProductStat.js";
-import { dataProduct, dataProductStat, dataTransaction } from "./data.js";
+import OverallStat from "./models/OverallStat.js";
+import {
+  dataProduct,
+  dataProductStat,
+  dataTransaction,
+  dataOverallStat,
+} from "./data.js";
 
 /* CONFIGURATION */
 const app = express();
