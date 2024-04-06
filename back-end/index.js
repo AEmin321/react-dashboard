@@ -9,6 +9,7 @@ import { info, error } from "./utils/logger.js";
 
 import generalRouter from "./controllers/general.js";
 import productsRouter from "./controllers/products.js";
+import salesRouter from "./controllers/sales.js";
 
 import User from "./models/User.js";
 import Product from "./models/Product.js";
@@ -35,6 +36,7 @@ app.use(cors());
 /* ROUTES */
 app.use("/api/general", generalRouter);
 app.use("/api/client", productsRouter);
+app.use("/api/sales", salesRouter);
 
 /* MONGOOSE SETUP */
 mongoose
