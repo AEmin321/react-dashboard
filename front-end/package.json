@@ -16,6 +16,7 @@
     "@mui/material": "^5.15.14",
     "@mui/x-data-grid": "^7.1.0",
     "@nivo/geo": "^0.85.1",
+    "@nivo/line": "^0.85.1",
     "@reduxjs/toolkit": "^2.2.1",
     "react": "^18.2.0",
     "react-datepicker": "^6.4.0",
