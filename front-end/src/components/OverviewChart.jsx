@@ -11,7 +11,7 @@ const OverviewChart = ({ isDash, filter }) => {
 
   const [totalSalesLine, totalUnitsLine] = useMemo(() => {
     if (!data) {
-      return [];
+      return <Loader />;
     }
     const { monthlyData } = data;
     const totalSalesLine = {
