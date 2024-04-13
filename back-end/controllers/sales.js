@@ -1,9 +1,9 @@
 import { Router } from "express";
-import OverallStat from "../models/OverallStat";
+import OverallStat from "../models/OverallStat.js";
 
 const salesRouter = Router();
 
-salesRouter.get("/stats", async (request, response) => {
+salesRouter.get("/overview", async (request, response) => {
   try {
     const stats = await OverallStat.find();
 

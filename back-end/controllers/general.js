@@ -48,4 +48,14 @@ generalRouter.get("/geography", async (request, response) => {
   }
 });
 
+generalRouter.get("/admins", async (request, response) => {
+  try {
+    const admins = await User.find({ role: "admin" }).select("-password");
+
+    response.status(200).json(admins);
+  } catch (error) {
+    response.status(404).json({ message: error.message });
+  }
+});
+
 export default generalRouter;
