@@ -6,7 +6,7 @@ import BreakdownChart from "../components/BreakdownChart";
 
 const BreakDown = () => {
   return (
-    <Box>
+    <Box margin="1.5rem 2rem">
       <Heading
         title="Breakdown Chart"
         subTitle="checkout the breakdown of categories."
