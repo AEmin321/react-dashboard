@@ -16,11 +16,13 @@ import Product from "./models/Product.js";
 import Transaction from "./models/Transaction.js";
 import ProductStat from "./models/ProductStat.js";
 import OverallStat from "./models/OverallStat.js";
+import AffiliateStat from "./models/AffiliateStat.js";
 import {
   dataProduct,
   dataProductStat,
   dataTransaction,
   dataOverallStat,
+  dataAffiliateStat,
 } from "./data.js";
 
 /* CONFIGURATION */
