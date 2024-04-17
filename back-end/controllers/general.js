@@ -3,6 +3,7 @@ import User from "../models/User.js";
 import getCountryISO3 from "country-iso-2-to-3";
 import mongoose from "mongoose";
 import Transaction from "../models/Transaction.js";
+import OverallStat from "../models/OverallStat.js";
 
 const generalRouter = Router();
 
@@ -103,6 +104,47 @@ generalRouter.get("/performance/:id", async (request, response) => {
       .json({ user: userWithStats[0], sales: filteredSaleTransactions });
   } catch (error) {
     response.status(500).json({ message: error.message });
+  }
+});
+
+generalRouter.get("/dashboard", async (request, response) => {
+  try {
+    const currentMonth = "November";
+    const currentYear = 2021;
+    const currentDay = "2021-11-15";
+
+    const transactions = await Transaction.find()
+      .limit(50)
+      .sort({ createdOn: -1 });
+
+    const otherStats = await OverallStat.find({ year: currentYear });
+    const {
+      totalCustomers,
+      yearlyTotalSoldUnits,
+      yearlySalesTotal,
+      monthlyData,
+      salesByCategory,
+    } = otherStats[0];
+
+    const thisDayStats = otherStats[0].dailyData.find(({ date }) => {
+      return date === currentDay;
+    });
+    const thisMonthStats = otherStats[0].monthlyData.find(({ month }) => {
+      return month === currentMonth;
+    });
+
+    response.status(200).json({
+      totalCustomers,
+      yearlyTotalSoldUnits,
+      yearlySalesTotal,
+      monthlyData,
+      salesByCategory,
+      transactions,
+      thisMonthStats,
+      thisDayStats,
+    });
+  } catch (error) {
+    response.status(404).json({ message: error.message });
   }
 });
 
