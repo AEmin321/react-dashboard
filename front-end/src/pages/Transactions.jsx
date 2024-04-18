@@ -21,8 +21,6 @@ const Transactions = () => {
     search: search,
   });
 
-  console.log("🚀 ~ Transactions ~ data:", data);
-
   const columns = [
     {
       field: "_id",

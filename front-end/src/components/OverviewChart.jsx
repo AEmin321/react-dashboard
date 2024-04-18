@@ -10,9 +10,8 @@ const OverviewChart = ({ isDash, filter }) => {
   console.log(filter);
 
   const [totalSalesLine, totalUnitsLine] = useMemo(() => {
-    if (!data) {
-      return <Loader />;
-    }
+    if (!data) return [];
+
     const { monthlyData } = data;
     const totalSalesLine = {
       id: "totalSales",
@@ -26,30 +25,24 @@ const OverviewChart = ({ isDash, filter }) => {
     };
 
     Object.values(monthlyData).reduce(
-      (count, { month, totalSales, totalUnits }) => {
-        const sales = totalSales + count.sales;
-        const units = totalUnits + count.units;
+      (acc, { month, totalSales, totalUnits }) => {
+        const curSales = acc.sales + totalSales;
+        const curUnits = acc.units + totalUnits;
 
         totalSalesLine.data = [
           ...totalSalesLine.data,
-          {
-            x: month,
-            y: sales,
-          },
+          { x: month, y: curSales },
         ];
         totalUnitsLine.data = [
           ...totalUnitsLine.data,
-          {
-            x: month,
-            y: units,
-          },
+          { x: month, y: curUnits },
         ];
 
-        return { sales: sales, units: units };
+        return { sales: curSales, units: curUnits };
       },
       { sales: 0, units: 0 }
     );
-    console.log(totalSalesLine, totalUnitsLine);
+
     return [[totalSalesLine], [totalUnitsLine]];
   }, [data]);
 
@@ -60,7 +53,7 @@ const OverviewChart = ({ isDash, filter }) => {
   return (
     <ResponsiveLine
       data={filter === "sales" ? totalSalesLine : totalUnitsLine}
-      margin={{ top: 20, right: 80, bottom: 50, left: 70 }}
+      margin={{ top: 20, right: 50, bottom: 50, left: 70 }}
       xScale={{ type: "point" }}
       yScale={{
         type: "linear",
@@ -70,6 +63,7 @@ const OverviewChart = ({ isDash, filter }) => {
         reverse: false,
       }}
       yFormat=" >-.2f"
+      curve="catmullRom"
       enableArea={isDash}
       axisTop={null}
       axisRight={null}
@@ -78,15 +72,17 @@ const OverviewChart = ({ isDash, filter }) => {
           if (isDash) return v.slice(0, 3);
           return v;
         },
+        orient: "bottom",
         tickSize: 5,
         tickPadding: 5,
         tickRotation: 0,
         legend: isDash ? "" : "Month",
         legendOffset: 36,
         legendPosition: "middle",
-        truncateTickAt: 0,
       }}
       axisLeft={{
+        orient: "left",
+        tickValues: 5,
         tickSize: 5,
         tickPadding: 5,
         tickRotation: 0,
@@ -95,17 +91,15 @@ const OverviewChart = ({ isDash, filter }) => {
           : `Total ${filter === "sales" ? "Revenue" : "Units"} for Year`,
         legendOffset: -60,
         legendPosition: "middle",
-        truncateTickAt: 0,
       }}
       enableGridX={false}
       enableGridY={false}
-      colors={{ scheme: "blue_green" }}
       pointSize={10}
+      colors={{ scheme: "category10" }}
       pointColor={{ theme: "background" }}
       pointBorderWidth={2}
       pointBorderColor={{ from: "serieColor" }}
       pointLabelYOffset={-12}
-      enableTouchCrosshair={true}
       useMesh={true}
       legends={
         !isDash
@@ -114,8 +108,8 @@ const OverviewChart = ({ isDash, filter }) => {
                 anchor: "bottom-right",
                 direction: "column",
                 justify: false,
-                translateX: 100,
-                translateY: 0,
+                translateX: 30,
+                translateY: -40,
                 itemsSpacing: 0,
                 itemDirection: "left-to-right",
                 itemWidth: 80,
