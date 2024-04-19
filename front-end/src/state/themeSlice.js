@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   mode: "dark",
-  userId: "63701cc1f032390a34000324",
+  userId: "63701cc1f03239c72c000181",
 };
 
 const themeSlice = createSlice({

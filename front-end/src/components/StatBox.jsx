@@ -9,10 +9,18 @@ const StatBox = ({ icon, title, value, increase, description }) => {
       gridColumn="span 2"
       gridRow="span 1"
       display="flex"
+      justifyContent="space-between"
       flexDirection="column"
       flex="1 1 100%"
       p="1rem"
+      sx={{ backgroundColor: theme.palette.secondary[900] }}
     >
+      <FlexBetween>
+        <Typography variant="h6" sx={{ color: theme.palette.secondary[100] }}>
+          {title}
+        </Typography>
+        {icon}
+      </FlexBetween>
       <Typography
         variant="h3"
         sx={{ color: theme.palette.secondary[200] }}
@@ -25,12 +33,6 @@ const StatBox = ({ icon, title, value, increase, description }) => {
           {increase}
         </Typography>
         <Typography>{description}</Typography>
-      </FlexBetween>
-      <FlexBetween>
-        <Typography variant="h6" sx={{ color: theme.palette.secondary[100] }}>
-          {title}
-        </Typography>
-        {icon}
       </FlexBetween>
     </Box>
   );

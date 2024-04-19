@@ -15,17 +15,16 @@ import {
   SettingsOutlined,
   ChevronLeft,
   ChevronRightOutlined,
-  HomeOutlined,
-  ShoppingCartOutlined,
-  Groups2Outlined,
-  ReceiptLongOutlined,
-  PublicOutlined,
-  PointOfSaleOutlined,
-  TodayOutlined,
-  CalendarMonthOutlined,
-  AdminPanelSettingsOutlined,
-  TrendingUpOutlined,
-  PieChartOutline,
+  Dashboard,
+  ShoppingCart,
+  Group,
+  ReceiptLong,
+  Public,
+  PointOfSale,
+  Today,
+  AdminPanelSettings,
+  TrendingUp,
+  PieChart,
 } from "@mui/icons-material";
 import profile from "../assets/profile.jpg";
 import FlexBetween from "./FlexBetween";
@@ -35,39 +34,31 @@ import { useState, useEffect } from "react";
 const sidebarItems = [
   {
     text: "Dashboard",
-    icon: <HomeOutlined />,
-  },
-  {
-    text: "Quick Menu",
-    icon: null,
+    icon: <Dashboard />,
   },
   {
     text: "Products",
-    icon: <ShoppingCartOutlined />,
+    icon: <ShoppingCart />,
   },
   {
     text: "Users",
-    icon: <Groups2Outlined />,
+    icon: <Group />,
   },
   {
     text: "Transactions",
-    icon: <ReceiptLongOutlined />,
+    icon: <ReceiptLong />,
   },
   {
     text: "Geography",
-    icon: <PublicOutlined />,
+    icon: <Public />,
   },
   {
-    text: "Stats",
-    icon: null,
+    text: "Breakdown",
+    icon: <PieChart />,
   },
   {
     text: "Daily",
-    icon: <TodayOutlined />,
-  },
-  {
-    text: "Monthly",
-    icon: <CalendarMonthOutlined />,
+    icon: <Today />,
   },
   {
     text: "Settings",
@@ -75,11 +66,11 @@ const sidebarItems = [
   },
   {
     text: "Admin",
-    icon: <AdminPanelSettingsOutlined />,
+    icon: <AdminPanelSettings />,
   },
   {
     text: "Performance",
-    icon: <TrendingUpOutlined />,
+    icon: <TrendingUp />,
   },
 ];
 

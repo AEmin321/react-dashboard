@@ -3,9 +3,11 @@ import { useGetSalesQuery } from "../state/apiSlice";
 
 import { ResponsivePie } from "@nivo/pie";
 import Loader from "./Loader";
+import { useTheme } from "@mui/material";
 
-const BreakdownChart = () => {
+const BreakdownChart = ({ isDash }) => {
   const { isLoading, data } = useGetSalesQuery();
+  const theme = useTheme();
 
   if (isLoading || !data) {
     return <Loader />;
@@ -31,8 +33,9 @@ const BreakdownChart = () => {
       borderWidth={1}
       borderColor={{
         from: "color",
-        modifiers: [["darker", 0.2]],
+        modifiers: [["darker", 0.3]],
       }}
+      enableArcLinkLabels={isDash ? false : true}
       arcLinkLabelsSkipAngle={10}
       arcLinkLabelsTextColor="#333333"
       arcLinkLabelsThickness={2}
@@ -120,9 +123,9 @@ const BreakdownChart = () => {
           translateX: 0,
           translateY: 56,
           itemsSpacing: 0,
-          itemWidth: 100,
+          itemTextColor: theme.palette.secondary[200],
+          itemWidth: 75,
           itemHeight: 18,
-          itemTextColor: "#999",
           itemDirection: "left-to-right",
           itemOpacity: 1,
           symbolSize: 18,
@@ -131,7 +134,7 @@ const BreakdownChart = () => {
             {
               on: "hover",
               style: {
-                itemTextColor: "#000",
+                itemTextColor: theme.palette.secondary[200],
               },
             },
           ],

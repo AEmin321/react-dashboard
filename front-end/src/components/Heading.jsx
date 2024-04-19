@@ -10,12 +10,12 @@ const Heading = ({ title, subTitle }) => {
       <Typography
         fontWeight="bold"
         variant="h3"
-        color={theme.palette.secondary[300]}
+        color={theme.palette.secondary[200]}
         mb="5px"
       >
         {title}
       </Typography>
-      <Typography color={theme.palette.secondary[300]} variant="h5">
+      <Typography color={theme.palette.secondary[200]} variant="h5">
         {subTitle}
       </Typography>
     </Box>

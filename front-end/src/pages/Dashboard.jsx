@@ -55,7 +55,12 @@ const Dashboard = () => {
     <Box margin="1.5rem 2rem">
       <FlexBetween>
         <Heading title="Dashboard" subTitle="Welcome to dashboard." />
-        <Button variant="contained" startIcon={<Download />}>
+        <Button
+          variant="contained"
+          startIcon={<Download />}
+          sx={{ backgroundColor: theme.palette.secondary[300] }}
+          disableElevation
+        >
           DOWNLOAD REPORTS
         </Button>
       </FlexBetween>
@@ -68,6 +73,71 @@ const Dashboard = () => {
           "&>div": { gridColumn: isNotMediumScreen ? undefined : "span 12" },
         }}
       >
+        <Box
+          gridColumn="span 8"
+          gridRow="span 2"
+          p="1rem"
+          sx={{ backgroundColor: theme.palette.secondary[900] }}
+        >
+          <OverviewChart filter="sales" isDash={true} />
+        </Box>
+        <Box
+          gridColumn="span 4"
+          gridRow="span 2"
+          color="#000"
+          sx={{ backgroundColor: theme.palette.secondary[900] }}
+        >
+          <BreakdownChart isDash={true} />
+        </Box>
+
+        <Box
+          gridColumn="span 8"
+          gridRow="span 2"
+          sx={{ backgroundColor: theme.palette.secondary[900] }}
+        >
+          <DataGrid
+            sx={{
+              "& .MuiDataGrid-root": {
+                border: "none",
+                backgroundColor: theme.palette.secondary[900],
+              },
+              "& .css-1nvrdbs-MuiDataGrid-root": {
+                border: "none",
+                backgroundColor: theme.palette.secondary[900],
+              },
+              "& .MuiDataGrid-columnHeader": {
+                border: "none",
+                backgroundColor: theme.palette.secondary[900],
+              },
+              "& .MuiDataGrid-scrollbarFiller": {
+                border: "none",
+                backgroundColor: theme.palette.secondary[900],
+              },
+              "& .MuiDataGrid-main": {
+                borderBottom: "none",
+                backgroundColor: theme.palette.secondary[900],
+              },
+              "& .css-1essi2g-MuiDataGrid-columnHeaderRow": {
+                backgroundColor: theme.palette.secondary[900],
+                borderBottom: "none",
+              },
+              "& .MuiDataGrid-columnHeaders": {
+                backgroundColor: theme.palette.secondary[900],
+              },
+              "& .MuiDataGrid-topContainer": {
+                backgroundColor: theme.palette.secondary[900],
+                borderTop: "none",
+              },
+              "& .MuiDataGrid-toolbarContainer .MuiButton-text": {
+                color: `${theme.palette.secondary[200]} !important`,
+              },
+            }}
+            loading={isLoading || !data}
+            getRowId={(row) => row._id}
+            rows={(data && data.transactions) || []}
+            columns={columns}
+          />
+        </Box>
         <StatBox
           title="Total Customers"
           value={data && data.totalCustomers}
@@ -80,11 +150,9 @@ const Dashboard = () => {
           value={data && data.thisDayStats.totalSales}
           increase="+15%"
           description="Since today"
-          icon={<PointOfSale sx={{ fontSize: "26px" }} />}
+          icon={<PointOfSale />}
         />
-        <Box gridColumn="span 8" gridRow="span 2" p="1rem">
-          <OverviewChart filter="sales" isDash={true} />
-        </Box>
+
         <StatBox
           title="Monthly Sales"
           value={data && data.thisMonthStats.totalSales}
@@ -97,27 +165,8 @@ const Dashboard = () => {
           value={data && data.yearlySalesTotal}
           increase="+45%"
           description="Since last year"
-          icon={<Traffic sx={{ fontSize: "26px" }} />}
+          icon={<Traffic />}
         />
-        <Box gridColumn="span 8" gridRow="span 3">
-          <DataGrid
-            sx={{
-              "& .MuiDataGrid-root": {
-                border: "none",
-              },
-            }}
-            loading={isLoading || !data}
-            getRowId={(row) => row._id}
-            rows={(data && data.transactions) || []}
-            columns={columns}
-          />
-        </Box>
-        <Box gridColumn="span 4" gridRow="span 3" p="1rem">
-          <Typography variant="h6" sx={{ color: theme.palette.secondary[100] }}>
-            Sale By Category
-          </Typography>
-          <BreakdownChart isDash={true} />
-        </Box>
       </Box>
     </Box>
   );

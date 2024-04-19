@@ -12,7 +12,6 @@ const Layout = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(true);
 
   const userId = useSelector((state) => state.global.userId);
-
   const { data } = useGetUserQuery(userId);
 
   return (

@@ -11,6 +11,7 @@ import Box from "@mui/material/Box";
 
 const Daily = () => {
   const { data } = useGetSalesQuery();
+  const theme = useTheme();
 
   const [dateStart, setDateStart] = useState(new Date("2021-01-01"));
   const [dateEnd, setDateEnd] = useState(new Date("2021-02-02"));
@@ -81,6 +82,39 @@ const Daily = () => {
         {data ? (
           <ResponsiveLine
             data={dailyData}
+            theme={{
+              axis: {
+                domain: {
+                  line: {
+                    stroke: theme.palette.secondary[200],
+                  },
+                },
+                legend: {
+                  text: {
+                    fill: theme.palette.secondary[200],
+                  },
+                },
+                ticks: {
+                  line: {
+                    stroke: theme.palette.secondary[200],
+                    strokeWidth: 1,
+                  },
+                  text: {
+                    fill: theme.palette.secondary[200],
+                  },
+                },
+              },
+              legends: {
+                text: {
+                  fill: theme.palette.secondary[200],
+                },
+              },
+              tooltip: {
+                container: {
+                  color: "#1D1D1D",
+                },
+              },
+            }}
             margin={{ top: 50, right: 80, bottom: 70, left: 60 }}
             xScale={{ type: "point" }}
             yScale={{
@@ -114,7 +148,7 @@ const Daily = () => {
             }}
             enableGridX={false}
             enableGridY={false}
-            colors={{ scheme: "blue_green" }}
+            colors={{ scheme: "dark2" }}
             pointSize={10}
             pointColor={{ theme: "background" }}
             pointBorderWidth={2}

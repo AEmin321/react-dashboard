@@ -24,7 +24,7 @@ const Product = ({
   return (
     <Card
       sx={{
-        backgroundColor: theme.palette.background.alt,
+        backgroundColor: theme.palette.secondary[900],
         backgroundImage: "none",
       }}
       elevation={2}
